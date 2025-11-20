@@ -1,20 +1,22 @@
 # classroom hall monitor challenge - Vanessa Rodriguez, Ayelen Cardenas
+
+status0 = "Ok"
+status1 = "warning"
+status2 = "flagged"
+
 # 1. Create Hall Pass List - Ayelen Cardenas
+
 student_names = [   ]   
 student = input("What is your name?: ")
 student_names.append(student)
 name_count = student_names.count(student)
 
-# 2. Loop 
-# student = input("Enter the student's time")
+# 2. Loop - Vanessa Rodriguez
 
-# while student == ("")
+
 
 # 3. Classify each student - Vanessa Rodriguez
 
-status0 = "Ok"
-status1 = "warning"
-status2 = "flagged"
 new_status = status0
 time = [   ]
 minutes = int(input("How long have you been in the hallway for?: "))
@@ -26,22 +28,56 @@ elif minutes >= 6 and minutes <= 10:
 else:
     new_status = status2  
 
+student = input("Enter the student's time: ")
+
+for student in status0:
+    if minutes >= 0 and minutes <= 5:
+        print(f"This student is {status0}.")
+
+for student in status1:
+    if minutes >= 6 and minutes <= 10:
+        print(f"This student got a {status1}.")
+
+for student in status2:
+    if minutes >= 11:
+        print(f"This student got {status2}.")
+
+
 
 # 4. Add a special rule -  Ayelen Cardenas
-
+special_rule = [  ]
 if minutes>10 or name_count>1:
     new_status = status2
-if minutes>10:
-    special_notes = "spent over 10 min outside"
-if name_count>1:
-    special_notes = "duplicate name detected"
+    if minutes>10:
+        special_notes = "spent over 10 min outside"
+    elif name_count>1:
+     special_notes = "duplicate name detected"
+else:
+    special_notes = "N/A"
+    
+special_rule.append(special_notes)
 
 status = [   ]
 status.append(new_status)
 
-data_list = [student_names, status, special_notes]
-header = ["Name", "Status", "Special Notes"]
-print(f"{header[0]:<10} {header[1]:<15}")
-print("-"*25)
-for row in data_list:
-    print(f"{row[0]:<10} {row[1]:<15}")
+print(student_names)
+print(status)
+print(special_notes)
+
+
+a = [
+    [student_names[0], status[0], special_notes[0]]
+]
+
+a.extend(student_names)
+a.extend(status)
+a.extend(special_rule)
+
+header = ['Names', 'Status', 'Special Notes']
+print(f"{header[0]:<10}   {header[1]:<15}    {header[2]:<18}")
+print("-"*40)
+for row in a:
+    print(f"{row[0]:<10}   {row[1]:<15}    {header[2]:<18}")
+
+
+
